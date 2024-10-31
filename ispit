@@ -1,0 +1,37 @@
+<?php
+
+class Book {
+    public $title;      // Naslov knjige
+    public $author;     // Autor knjige
+    public $isbn;       // ISBN broj knjige
+    public $available;  // Dostupnost knjige za posudbu (true ili false)
+
+    // Konstruktor za inicijalizaciju svojstava
+    public function __construct($title, $author, $isbn) {
+        $this->title = $title;
+        $this->author = $author;
+        $this->isbn = $isbn;
+        $this->available = true; // Dostupno prema zadanim postavkama
+    }
+
+    // Metoda za posuđivanje knjige
+    public function borrow() {
+        if ($this->available) {
+            $this->available = false;
+            return true;
+        }
+        return false;
+    }
+
+    // Metoda za vraćanje knjige
+    public function returnBook() {
+        $this->available = true;
+    }
+
+    // Metoda za prikaz informacija o knjizi
+    public function getInfo() {
+        return "Naslov: $this->title, Autor: $this->author, ISBN: $this->isbn";
+    }
+}
+
+?>
